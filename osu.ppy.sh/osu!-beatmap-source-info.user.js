@@ -5,6 +5,9 @@
 // @grant       GM_addStyle
 // @version     1.0
 // @author      AutumnVN
+// @homepageURL https://github.com/AutumnVN/userscript
+// @downloadURL https://github.com/AutumnVN/userscript/raw/main/osu.ppy.sh/osu!-beatmap-source-info.user.js
+// @updateURL   https://github.com/AutumnVN/userscript/raw/main/osu.ppy.sh/osu!-beatmap-source-info.user.js
 // ==/UserScript==
 
 onUrlChange();
