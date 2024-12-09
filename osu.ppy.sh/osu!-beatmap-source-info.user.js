@@ -3,7 +3,7 @@
 // @description add anime/visual novel info to beatmap page so i dont have to look it up manually
 // @match       *://osu.ppy.sh/*
 // @grant       GM_addStyle
-// @version     1.0
+// @version     1.1
 // @author      AutumnVN
 // @homepageURL https://github.com/AutumnVN/userscript
 // @downloadURL https://github.com/AutumnVN/userscript/raw/main/osu.ppy.sh/osu!-beatmap-source-info.user.js
@@ -18,15 +18,12 @@ new MutationObserver(() => u !== (u = location.pathname) && onUrlChange()).obser
 function onUrlChange() {
     if (!location.pathname.match(/^\/beatmapsets\/\d+$/)) return;
 
-    waitUntil(() => document.querySelector('#json-beatmapset') && document.querySelector('.osu-page--generic-compact'), onReady);
+    new MutationObserver(function () { main() && this.disconnect() }).observe(document.body, { childList: true, subtree: true });
 }
 
-function waitUntil(condition, callback) {
-    if (condition()) callback();
-    else setTimeout(() => waitUntil(condition, callback), 100);
-}
+function main() {
+    if (!document.querySelector('#json-beatmapset') || !document.querySelector('.osu-page--generic-compact')) return;
 
-function onReady() {
     const jsonBeatmapset = JSON.parse(document.querySelector('#json-beatmapset').textContent);
 
     if (!jsonBeatmapset || !jsonBeatmapset.source) return;
@@ -106,6 +103,8 @@ function onReady() {
             document.querySelector('.osu-page--generic-compact').insertBefore(div, document.querySelector('.osu-page--generic-compact').childNodes[2]);
         });
     }
+
+    return true;
 }
 
 GM_addStyle(`
