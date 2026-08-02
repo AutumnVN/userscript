@@ -3,7 +3,11 @@
 // @version     1.0
 // @description Mark cards already have their evolution 3 unlocked with ✅
 // @author      AutumnVN
-// @match       https://vcard.ameba.jp/*
+// @match       https://vcard.ameba.jp/card*
+// @match       https://vcard.ameba.jp/evolution*
+// @match       https://vcard.ameba.jp/limitbreak*
+// @match       https://vcard.ameba.jp/upgrade*
+// @match       https://vcard.ameba.jp/giftbox*
 // @homepageURL https://github.com/AutumnVN/userscript
 // @downloadURL https://github.com/AutumnVN/userscript/raw/main/vcard.ameba.jp/Girl-Friend-Kari-unlocked-evolution-3-marker.js
 // @updateURL   https://github.com/AutumnVN/userscript/raw/main/vcard.ameba.jp/Girl-Friend-Kari-unlocked-evolution-3-marker.js
