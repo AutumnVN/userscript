@@ -17,14 +17,14 @@ const originalSetInterval = window.setInterval;
 const originalRequestAnimationFrame = window.requestAnimationFrame;
 
 window.setTimeout = function (callback, delay, ...args) {
-    if (document.querySelector('canvas')) {
+    if (document.querySelector('body>canvas, body>div>canvas')) {
         delay = delay / SPEED_MULTIPLIER;
     }
     return originalSetTimeout(callback, delay, ...args);
 }
 
 window.setInterval = function (callback, delay, ...args) {
-    if (document.querySelector('canvas')) {
+    if (document.querySelector('body>canvas, body>div>canvas')) {
         delay = delay / SPEED_MULTIPLIER;
     }
     return originalSetInterval(callback, delay, ...args);
@@ -32,7 +32,7 @@ window.setInterval = function (callback, delay, ...args) {
 
 window.requestAnimationFrame = function (callback) {
     return originalRequestAnimationFrame(function (timestamp) {
-        if (document.querySelector('canvas')) {
+        if (document.querySelector('body>canvas, body>div>canvas')) {
             timestamp = timestamp * SPEED_MULTIPLIER;
         }
         callback(timestamp);
